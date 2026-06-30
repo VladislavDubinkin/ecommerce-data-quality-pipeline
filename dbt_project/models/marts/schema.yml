@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: mart_order_metrics
+    description: >
+      Order-level fact table joining orders and order items.
+      One row per order with total value, item count, and delivery duration.
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+
+  - name: mart_delivery_quality
+    description: Aggregated delivery performance by order status.

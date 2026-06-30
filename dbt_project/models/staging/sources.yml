@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: retail
+    schema: public
+    tables:
+      - name: orders
+        description: Raw order records from Olist dataset.
+      - name: order_items
+        description: Line items per order – products, sellers, prices.
+      - name: customers
+        description: Customer master data including anonymised location.
+      - name: products
+        description: Product catalog with category information.
