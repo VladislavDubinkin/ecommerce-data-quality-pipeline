@@ -1,0 +1,65 @@
+name: Data Quality CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-pipeline:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: changeme
+          POSTGRES_DB: retail
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install sqlfluff great-expectations pandas \
+                      sqlalchemy psycopg2-binary python-dotenv
+
+      - name: Lint SQL files
+        run: |
+          sqlfluff lint sql/ \
+            --dialect postgres \
+            --rules L001,L002,L003,L010,L011,L014
+
+      - name: Run ingestion (test data subset)
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: changeme
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
+          POSTGRES_DB: retail
+        run: python ingestion/load_raw.py
+
+      - name: Verify GE expectations are defined
+        run: |
+          python -c "
+          import great_expectations as gx
+          ctx = gx.get_context()
+          suites = list(ctx.suites.all())
+          print(f'Found {len(suites)} expectation suites')
+          assert len(suites) >= 3, 'Expected at least 3 suites'
+          "
