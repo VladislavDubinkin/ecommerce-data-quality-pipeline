@@ -1,0 +1,1 @@
+dbt_project/**/*.sql linguist-vendored=false
