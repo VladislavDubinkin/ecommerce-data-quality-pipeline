@@ -1,2 +1,4 @@
-dbt_project/**/*.sql linguist-vendored=false linguist-documentation=false
-sql/**/*.sql linguist-vendored=false linguist-documentation=false
+*.sql linguist-vendored=false
+*.sql linguist-documentation=false
+*.sql linguist-language=SQL
+*.sql linguist-detectable=true
