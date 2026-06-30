@@ -1,0 +1,22 @@
+{
+  "data": {
+    "asset": {
+      "id": "62f4d9c9-ac48-47d7-9ed4-1fc9d6f31150",
+      "name": "customers"
+    },
+    "batch_definition": {
+      "id": "95285fbc-1695-4dd6-afc6-5d2648d40d1d",
+      "name": "customers_batch"
+    },
+    "datasource": {
+      "id": "82888667-faca-4a13-8649-d285e3dd56cc",
+      "name": "retail_postgres"
+    }
+  },
+  "id": "a9be0d33-819a-4965-ae42-0ab38f412db5",
+  "name": "customers_validation",
+  "suite": {
+    "id": "deaa48cb-8ff0-4bf7-b376-66879bca870f",
+    "name": "customers_suite"
+  }
+}

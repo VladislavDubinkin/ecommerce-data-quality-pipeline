@@ -1,0 +1,75 @@
+{
+  "expectations": [
+    {
+      "id": "997014c3-cc48-473b-b144-834197c379d9",
+      "kwargs": {
+        "column": "order_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "5e60fe89-2c17-4cff-8ef8-34b1b8899cc2",
+      "kwargs": {
+        "column": "order_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "id": "44efe52d-1fd3-419b-b4a3-2dfc9f35d6b6",
+      "kwargs": {
+        "column": "customer_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "1d98c04c-6c08-475f-b099-53131d9352f4",
+      "kwargs": {
+        "column": "order_purchase_timestamp"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "58803039-d1e3-4010-80ee-e850cea21860",
+      "kwargs": {
+        "column": "order_status",
+        "value_set": [
+          "delivered",
+          "shipped",
+          "canceled",
+          "processing",
+          "approved",
+          "invoiced",
+          "created",
+          "unavailable"
+        ]
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "937899d5-0e21-4c58-9d7f-5dd2d4acdc61",
+      "kwargs": {
+        "max_value": 120000,
+        "min_value": 90000
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_table_row_count_to_be_between"
+    }
+  ],
+  "id": "57ca1d15-2d59-4866-b474-62ea7c302c70",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "orders_suite",
+  "notes": null
+}
