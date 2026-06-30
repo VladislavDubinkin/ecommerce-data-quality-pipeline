@@ -1,1 +1,2 @@
-dbt_project/**/*.sql linguist-vendored=false
+dbt_project/**/*.sql linguist-vendored=false linguist-documentation=false
+sql/**/*.sql linguist-vendored=false linguist-documentation=false
